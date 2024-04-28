@@ -1,0 +1,33 @@
+{% extends 'template.html' %}
+{% block body %}
+
+<div class="products">
+  <h2>Recommendation Results</h2>
+  <ul style="width: 50%;padding:20px; justify-content: space-evenly;">
+    <li style="width: 70%;">
+      <div class="container">
+        <h3>Your Image:</h3>
+        
+        <div class="product-container" style="  width: 50%;">
+          <div class="product-image">
+              <img style="border-radius: 10px;" src="{{ url_for('static', filename=uploaded_file) }}" alt="{{ uploaded_file }}">
+          </div>
+
+        </div>
+      </div>
+    </li>
+  </ul>
+    <h2>Top 5 similar:</h2>
+    <ul>
+      {% for i in range(5) %}
+        <li>
+          <div class="product-container">
+            <div class="product-image">
+              <img src="{{ url_for('static', filename=filenames[indices[0][i+1]].replace('\\', '/')) }}" alt="{{ i }}">
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <button id="load-more-btn" class="btn btn-primary">Load More</button>
+  </div>
+{% endblock %}

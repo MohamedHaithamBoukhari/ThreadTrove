@@ -1,0 +1,29 @@
+{% extends 'template.html' %}
+
+{% block body %}
+  <div class="products">
+    <h2>{{ column }} : {{ value}}</h2>
+    <ul id="product-list">
+      {% for product in products[:30] %}
+        <li>
+          <div class="product-container">
+            <div class="product-image">
+              <img src="{{ url_for('static', filename='Dataset/' + product.Image) }}" alt="{{ product.Image }}">
+            </div>
+            <div class="product-infos">
+              <div class="product-category">{{product.Category}}</div>
+              <div class="product-gender">{{product.Gender}}</div>
+            </div>
+            <p class="product-title">{{ product.ProductTitle }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <button id="load-more-btn" class="btn btn-primary">Load More</button>
+  </div>
+{% endblock %}
+
+{% block js %}
+  
+  
+{% endblock %}
